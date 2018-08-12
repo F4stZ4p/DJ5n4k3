@@ -6,6 +6,10 @@ bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(";;;"))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music')
 
+@bot.check
+async def _bot_protection(ctx):
+    return not ctx.author.bot
+
 @bot.event
 async def on_ready():
     print('Bot is ready!')
