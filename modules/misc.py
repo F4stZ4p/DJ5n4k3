@@ -33,7 +33,7 @@ class Misc():
         """Check my reaction time!"""
         resp = await ctx.send('Loading...')
         diff = resp.created_at - ctx.message.created_at
-        await resp.edit(content=f':ping_pong: Pong! API latency: {1000*diff.total_seconds():.1f}ms. {self.bot.user.name} latency: {round(self.bot.latency * 1000)}ms')
+        await resp.edit(content=f':ping_pong: Pong! **API** latency: {1000*diff.total_seconds():.1f}ms. **{self.bot.user.name}** latency: {round(self.bot.latency * 1000)}ms')
 
 def setup(bot):
     bot.add_cog(Misc(bot))
