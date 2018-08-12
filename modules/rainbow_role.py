@@ -3,7 +3,7 @@ import asyncio
 import random
 from discord.ext import commands
 
-class RainbowRole()
+class RainbowRole():
     """Rainbow role for your discord!"""
     def __init__(self, bot):
         self.bot = bot
@@ -46,3 +46,4 @@ class RainbowRole()
 
 def setup(bot):
     bot.add_cog(RainbowRole(bot))
+    print('Rainbow Role module loaded.')
