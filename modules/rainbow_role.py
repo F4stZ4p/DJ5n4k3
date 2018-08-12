@@ -38,7 +38,7 @@ class RainbowRole():
             self._rainbow_roles[ctx.guild.id] = role
             self._rainbow_cooldown[ctx.guild.id] = cooldown
             try:
-                self._guild_tasks[ctx.guild.id] = await self.bot.loop.create_task(self._do_rainbow_role(ctx.guild))
+                self._guild_tasks[ctx.guild.id] = await self.bot.loop.create_task(self._do_rainbow_role(self, ctx.guild))
             except Exception as e:
                 await ctx.send(f':thumbsdown:: {e}')
             else:
