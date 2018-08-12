@@ -5,6 +5,7 @@ from discord.ext import commands
 bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(";;;"))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler')
+bot.owner = (340745895932854272) # your id here
 
 @bot.check
 async def _bot_protection(ctx):
