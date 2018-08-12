@@ -378,7 +378,6 @@ class Music:
         await ctx.send(f":notes: Connected to channel: **{channel}**", delete_after=20)
         
     @commands.command(name='play', aliases=['sing'])
-    @commands.cooldown(1.0, 15.0, commands.BucketType.guild)
     async def play_(self, ctx, *, search: str):
         """Request a song and add it to the queue.
 
@@ -408,7 +407,6 @@ class Music:
         await player.queue.put(source)
 
     @commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
-    @commands.cooldown(1.0, 15.0, commands.BucketType.guild)
     async def now_playing_(self, ctx):
         """Display information about the currently playing song."""
 
