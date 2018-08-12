@@ -14,7 +14,7 @@ async def _bot_protection(ctx):
 @bot.event
 async def on_ready():
     print(f'Bot is ready! Logged as in: {bot.user}')
-    await bot.change_presence(status=discord.Status.idle, activity=discord.Streaming(name=f"your music! ;;;help", url="https://twitch.tv/streamer"))
+    await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name="your moves | ;;;help"))
 
 if __name__ == "__main__":
     for extension in bot.initials:
