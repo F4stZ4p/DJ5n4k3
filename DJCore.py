@@ -4,7 +4,7 @@ from discord.ext import commands
 
 bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(";;;"))
 bot.remove_command('help')
-bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.rainbow_role')
+bot.initials = ('modules.misc', 'modules.music', 'modules.handler')
 
 @bot.check
 async def _bot_protection(ctx):
