@@ -30,7 +30,7 @@ class Admin:
         return content.strip('` \n')
 
     async def __local_check(self, ctx):
-        if ctx.author.id in self._config_owner_id:
+        if ctx.author.id == self._config_owner_id:
             return True
         else:
             return
