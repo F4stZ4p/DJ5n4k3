@@ -16,7 +16,6 @@ class CommandErrorHandler:
         
 
         if isinstance(error, commands.CommandNotFound):
-            await ctx.message.add_reaction(':questionmark:474659543041703947')
             return
 
         elif isinstance(error, commands.BadArgument):
