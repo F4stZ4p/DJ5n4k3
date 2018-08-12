@@ -199,11 +199,11 @@ class MusicPlayer:
 
             if control == 'vol_up':
                 player = self._cog.get_player(context)
-                player.volume += 5
+                vctwo.source.volume += 5
                         
             if control == 'vol_down':
                 player = self._cog.get_player(context)
-                player.volume -= 5
+                vctwo.source.volume -= 5
 
             if control == 'thumbnail':
                 await channel.send(embed=discord.Embed(color=0xf4df42).set_image(url=source.thumbnail).set_footer(text=f"Requested by {source.requester} | Video: {source.title}", icon_url=source.requester.avatar_url), delete_after=10)
