@@ -168,6 +168,8 @@ class MusicPlayer:
                 return False
             elif u not in vc.channel.members:
                 return False
+            elif u.bot:
+                return False
             return True
 
         while current:
@@ -197,17 +199,11 @@ class MusicPlayer:
 
             if control == 'vol_up':
                 player = self._cog.get_player(context)
-                if vctwo.source:
-                    if not vctwo.source.volume > 100 or player.volume > 100:
-                        vctwo.source.volume += 5
-                        player.volume += 5
+                player.volume += 5
                         
             if control == 'vol_down':
                 player = self._cog.get_player(context)
-                if vctwo.source:
-                    if not vctwo.source.volume < 10 or player.volume < 10:
-                        vctwo.source.volume -= 5
-                        player.volume -= 5
+                player.volume -= 5
 
             if control == 'thumbnail':
                 await channel.send(embed=discord.Embed(color=0xf4df42).set_image(url=source.thumbnail).set_footer(text=f"Requested by {source.requester} | Video: {source.title}", icon_url=source.requester.avatar_url), delete_after=10)
@@ -217,9 +213,6 @@ class MusicPlayer:
             
             if control == 'queue':
                 await self._cog.queue_info(context)
-
-            if control == 'lyrics':
-                await self._cog.search_lyrics(context, source.uploader, source.title)
 
             try:
                 await current.remove_reaction(react, user)
