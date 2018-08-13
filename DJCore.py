@@ -6,7 +6,7 @@ bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(os.geten
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.owner')
 bot.owner = int(os.getenv('OWNER'))
-bot._color = int(os.getenv('COLOR'))
+bot._color = int(os.getenv('COLOR'), 16)
 
 @bot.check
 async def _bot_protection(ctx):
