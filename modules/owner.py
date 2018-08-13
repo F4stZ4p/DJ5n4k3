@@ -117,7 +117,7 @@ class Admin:
         os.execl(sys.executable, sys.executable, * sys.argv)
 
     @commands.command(hidden=True, aliases=['cc'])
-    async def changecolor(self, ctx, *, color: int):
+    async def changecolor(self, ctx, *, color):
         """Change the bot color (temporary)"""
         try:
             self.bot.color = color
