@@ -2,11 +2,11 @@ import discord
 import os
 from discord.ext import commands
 
-bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(";;;"))
+bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(os.getenv('PREFIX')))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.owner')
-bot.owner = 340745895932854272 # your id here
-bot._color = 0xf4df42 # your any hex color here
+bot.owner = os.getenv('OWNER')
+bot._color = os.getenv('COLOR')
 
 @bot.check
 async def _bot_protection(ctx):
@@ -24,4 +24,4 @@ if __name__ == "__main__":
         except Exception as e:
             print(f'Failed to load extension {extension}: {e}')
 
-bot.run(os.environ.get('TOKEN'))
+bot.run(os.getenv('TOKEN'))

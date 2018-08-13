@@ -7,4 +7,9 @@ https://github.com/xrisk/heroku-opus.git
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
 ```
 
-- Also you need to have TOKEN variable in Heroku app with your bot's token
+**Needed variables in Heroku app**
+
+- TOKEN (Your bot's token)
+- OWNER (Your id) (for example 340745895932854272)
+- COLOR (Bot color) (for example 0xff0000)
+- PREFIX (Bot prefix) (for example ;;;)
