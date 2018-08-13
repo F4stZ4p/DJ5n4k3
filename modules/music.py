@@ -206,10 +206,10 @@ class MusicPlayer:
                 vctwo.source.volume -= 5
 
             if control == 'thumbnail':
-                await channel.send(embed=discord.Embed(color=self.bot._color).set_image(url=source.thumbnail).set_footer(text=f"Requested by {source.requester} | Video: {source.title}", icon_url=source.requester.avatar_url), delete_after=10)
+                await channel.send(embed=discord.Embed(color=self.bot.color).set_image(url=source.thumbnail).set_footer(text=f"Requested by {source.requester} | Video: {source.title}", icon_url=source.requester.avatar_url), delete_after=10)
 
             if control == 'tutorial':
-                await channel.send(embed=discord.Embed(color=self.bot._color).add_field(name="How to use Music Controller?", value="⏯ - Resume or pause player\n⏭ - Skip song\n➕ - Volume up\n➖ - Volume down\n🖼 - Get song thumbnail\n⏹ - Stop music session\nℹ - Player queue\n❔ - Shows you how to use Music Controller"), delete_after=10)
+                await channel.send(embed=discord.Embed(color=self.bot.color).add_field(name="How to use Music Controller?", value="⏯ - Resume or pause player\n⏭ - Skip song\n➕ - Volume up\n➖ - Volume down\n🖼 - Get song thumbnail\n⏹ - Stop music session\nℹ - Player queue\n❔ - Shows you how to use Music Controller"), delete_after=10)
             
             if control == 'queue':
                 await self._cog.queue_info(context)
@@ -248,7 +248,7 @@ class MusicPlayer:
                 self._guild.voice_client.play(source, after=lambda _: self.bot.loop.call_soon_threadsafe(self.next.set))
             except Exception:
                 continue
-            embednps = discord.Embed(color=self.bot._color)
+            embednps = discord.Embed(color=self.bot.color)
             embednps.add_field(name=":notepad_spiral: Song title:", value=f"```fix\n{source.title}```", inline=False)
             embednps.add_field(name=":trumpet: Requested by:", value=f"**{source.requester}**", inline=True)
             embednps.add_field(name=":link: Song URL:", value=f"**[URL]({source.web_url})**", inline=True)
@@ -421,7 +421,7 @@ class Music:
         except discord.HTTPException:
             pass
 
-        embednp = discord.Embed(color=self.bot._color)
+        embednp = discord.Embed(color=self.bot.color)
         embednp.add_field(name=":notepad_spiral: Song title:", value=f"```fix\n{vc.source.title}```", inline=False)
         embednp.add_field(name=":trumpet: Requested by:", value=f"**{vc.source.requester}**", inline=True)
         embednp.add_field(name=":link: Song URL:", value=f"**[URL]({vc.source.web_url})**", inline=True)
@@ -439,7 +439,7 @@ class Music:
         upcoming = list(itertools.islice(player.queue._queue, 0, 5))
 
         fmt = '\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
-        embed = discord.Embed(title=f'Queue - Next {len(upcoming)}', description=fmt, color=self.bot._color)
+        embed = discord.Embed(title=f'Queue - Next {len(upcoming)}', description=fmt, color=self.bot.color)
         await ctx.send(embed=embed)
 
 def setup(bot):

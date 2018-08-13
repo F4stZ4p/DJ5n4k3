@@ -21,7 +21,6 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self._last_result = None
-        self._config_owner_id = self.bot.owner
         self.sessions = set()
 
     def cleanup_code(self, content):
@@ -30,7 +29,7 @@ class Admin:
         return content.strip('` \n')
 
     async def __local_check(self, ctx):
-        if ctx.author.id == self._config_owner_id:
+        if ctx.author.id == self.bot.owner:
             return True
         else:
             return
@@ -38,6 +37,7 @@ class Admin:
 
     @commands.command(pass_context=True, hidden=True, name='eval', aliases=['evaluate'])
     async def _eval(self, ctx, *, body: str):
+        """Evaluates a piece of code"""
         env = {
             'bot': self.bot,
             'ctx': ctx,
@@ -80,14 +80,14 @@ class Admin:
 
             if ret is None:
                 if value:
-                    sfooem = discord.Embed(color=self.bot._color)
+                    sfooem = discord.Embed(color=self.bot.color)
                     sfooem.add_field(name="Code evaluation was successful!", value=f'```py\n{value}\n```'.replace(self.bot.http.token, '•' * len(self.bot.http.token)))
                     sfooem.set_footer(text=f"Evaluated using Python {python_version()}", icon_url="http://i.imgur.com/9EftiVK.png")
                     sfooem.timestamp = ctx.message.created_at
                     await ctx.send(embed=sfooem)
             else:
                 self._last_result = ret
-                ssfooem = discord.Embed(color=self.bot._color)
+                ssfooem = discord.Embed(color=self.bot.color)
                 ssfooem.add_field(name="Code evaluation was successful!", value=f'```py\n{value}{ret}\n```'.replace(self.bot.http.token, '•' * len(self.bot.http.token)))
                 ssfooem.set_footer(text=f"Evaluated using Python {python_version()}", icon_url="http://i.imgur.com/9EftiVK.png")
                 ssfooem.timestamp = ctx.message.created_at
@@ -95,6 +95,7 @@ class Admin:
 
     @commands.command(hidden=True, aliases=['die'])
     async def logout(self, ctx):
+        """Logs out bot from Discord"""
         await self.bot.logout()
 
     @commands.command(hidden=True, aliases=["say","print"])
@@ -103,6 +104,7 @@ class Admin:
 
     @commands.command(hidden=True, aliases=["impersonate"])
     async def runas(self, ctx, member: discord.Member, *, cmd):
+        """Invoke bot command as specified user"""
         msg = copy.copy(ctx.message)
         msg.content = f"{ctx.me.mention} {cmd}"
         msg.author = member
@@ -111,8 +113,18 @@ class Admin:
     @commands.command(hidden=True, aliases=['r'])
     async def restart(self, ctx):
         """Restarts the bot"""
-        await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text="Restarting..."))
+        await ctx.send(embed=discord.Embed(color=self.bot.color).set_footer(text="Restarting..."))
         os.execl(sys.executable, sys.executable, * sys.argv)
+
+    @commands.command(hidden=True, aliases=['cc'])
+    async def changecolor(self, ctx, *, color: int):
+        """Change the bot color (temporary)"""
+        try:
+            self.bot.color = color
+        except:
+            await ctx.send(':thumbsdown:')
+        else:
+            await ctx.send(':thumbsup:')
 
 def setup(bot):
     bot.add_cog(Admin(bot))
