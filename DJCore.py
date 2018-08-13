@@ -5,8 +5,8 @@ from discord.ext import commands
 bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(os.getenv('PREFIX')))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.owner')
-bot.owner = os.getenv('OWNER')
-bot._color = os.getenv('COLOR')
+bot.owner = int(os.getenv('OWNER'))
+bot._color = int(os.getenv('COLOR'))
 
 @bot.check
 async def _bot_protection(ctx):
