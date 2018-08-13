@@ -35,6 +35,11 @@ class Misc():
         diff = resp.created_at - ctx.message.created_at
         await resp.edit(content=f':ping_pong: Pong! **API** latency: {1000*diff.total_seconds():.1f}ms. **{self.bot.user.name}** latency: {round(self.bot.latency * 1000)}ms')
 
+    @commands.command(aliases=['code','sourcecode','sauce'])
+    async def source(self, ctx):
+        """Check the bot source"""
+        await ctx.send(embed=discord.Embed(color=self.bot._color, timestamp=ctx.message.created_at).add_field(name="**Source**", value="**[GitHub Link](https://github.com/F4stZ4p/DJ5n4k3/)**"))
+
 def setup(bot):
     bot.add_cog(Misc(bot))
     print('Miscellaneous module loaded.')

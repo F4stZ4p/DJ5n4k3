@@ -19,40 +19,40 @@ class CommandErrorHandler:
             return
 
         elif isinstance(error, commands.BadArgument):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.NoPrivateMessage):
             return
 
         elif isinstance(error, commands.CheckFailure):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like this command is thought for other users. You can't use it.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like this command is thought for other users. You can't use it.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.DisabledCommand):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like this command in disabled.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like this command in disabled.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.CommandInvokeError):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like something went wrong. Report this issue to the developer.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like something went wrong. Report this issue to the developer.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.TooManyArguments):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like you gave too many arguments.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like you gave too many arguments.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.UserInputError):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like you did something wrong.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like you did something wrong.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.CommandOnCooldown):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.NotOwner):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like you do not own this bot.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like you do not own this bot.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.MissingPermissions):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
 
         elif isinstance(error, commands.BotMissingPermissions):
-            await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
+            await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text=f"Seems like {error}.", icon_url=ctx.author.avatar_url))
 
 def setup(bot):
     print('Error handler loaded.')

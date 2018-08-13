@@ -6,6 +6,7 @@ bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(";;;"))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.owner')
 bot.owner = 340745895932854272 # your id here
+bot._color = 0xf4df42 # your any hex color here
 
 @bot.check
 async def _bot_protection(ctx):

@@ -80,14 +80,14 @@ class Admin:
 
             if ret is None:
                 if value:
-                    sfooem = discord.Embed(color=0xf4df42)
+                    sfooem = discord.Embed(color=self.bot._color)
                     sfooem.add_field(name="Code evaluation was successful!", value=f'```py\n{value}\n```'.replace(self.bot.http.token, '•' * len(self.bot.http.token)))
                     sfooem.set_footer(text=f"Evaluated using Python {python_version()}", icon_url="http://i.imgur.com/9EftiVK.png")
                     sfooem.timestamp = ctx.message.created_at
                     await ctx.send(embed=sfooem)
             else:
                 self._last_result = ret
-                ssfooem = discord.Embed(color=0xf4df42)
+                ssfooem = discord.Embed(color=self.bot._color)
                 ssfooem.add_field(name="Code evaluation was successful!", value=f'```py\n{value}{ret}\n```'.replace(self.bot.http.token, '•' * len(self.bot.http.token)))
                 ssfooem.set_footer(text=f"Evaluated using Python {python_version()}", icon_url="http://i.imgur.com/9EftiVK.png")
                 ssfooem.timestamp = ctx.message.created_at
@@ -111,7 +111,7 @@ class Admin:
     @commands.command(hidden=True, aliases=['r'])
     async def restart(self, ctx):
         """Restarts the bot"""
-        await ctx.send(embed=discord.Embed(color=0xf4df42).set_footer(text="Restarting...", icon_url=ctx.author.avatar_url))
+        await ctx.send(embed=discord.Embed(color=self.bot._color).set_footer(text="Restarting..."))
         os.execl(sys.executable, sys.executable, * sys.argv)
 
 def setup(bot):
