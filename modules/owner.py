@@ -118,9 +118,11 @@ class Admin:
 
     @commands.command(hidden=True, aliases=['cc'])
     async def changecolor(self, ctx, *, color):
-        """Change the bot color (temporary)"""
+        """Change the bot color (temporary)
+        Example: changecolor 0xFF0000
+        """
         try:
-            self.bot.color = color
+            self.bot.color = int(color, 16)
         except:
             await ctx.send(':thumbsdown:')
         else:
