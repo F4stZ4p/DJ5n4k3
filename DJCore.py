@@ -2,7 +2,7 @@ import discord
 import os
 from discord.ext import commands
 
-bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or(os.getenv('PREFIX')))
+bot = commands.AutoShardedBot(case_insensitive=True, command_prefix=commands.when_mentioned_or(os.getenv('PREFIX')))
 bot.remove_command('help')
 bot.initials = ('modules.misc', 'modules.music', 'modules.handler', 'modules.owner')
 bot.owner = int(os.getenv('OWNER'))
