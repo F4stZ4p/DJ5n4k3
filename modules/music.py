@@ -249,11 +249,11 @@ class MusicPlayer:
             except Exception:
                 continue
             embednps = discord.Embed(color=self.bot.color)
-            embednps.add_field(name=":notepad_spiral: Song title:", value=f"```fix\n{source.title}```", inline=False)
-            embednps.add_field(name=":trumpet: Requested by:", value=f"**{source.requester}**", inline=True)
-            embednps.add_field(name=":link: Song URL:", value=f"**[URL]({source.web_url})**", inline=True)
-            embednps.add_field(name=":spy: Uploader:", value=f"**{source.uploader}**", inline=True)
-            embednps.add_field(name=":alarm_clock: Song duration:", value=f"**{datetime.timedelta(seconds=source.duration)}**", inline=True)
+            embednps.add_field(name="Song title:", value=f"```fix\n{source.title}```", inline=False)
+            embednps.add_field(name="Requested by:", value=f"**{source.requester}**", inline=True)
+            embednps.add_field(name="Song URL:", value=f"**[URL]({source.web_url})**", inline=True)
+            embednps.add_field(name="Uploader:", value=f"**{source.uploader}**", inline=True)
+            embednps.add_field(name="Song duration:", value=f"**{datetime.timedelta(seconds=source.duration)}**", inline=True)
             embednps.set_thumbnail(url=f"{source.thumbnail}")
             self.np = await self._channel.send(embed=embednps)
 
@@ -422,11 +422,11 @@ class Music:
             pass
 
         embednp = discord.Embed(color=self.bot.color)
-        embednp.add_field(name=":notepad_spiral: Song title:", value=f"```fix\n{vc.source.title}```", inline=False)
-        embednp.add_field(name=":trumpet: Requested by:", value=f"**{vc.source.requester}**", inline=True)
-        embednp.add_field(name=":link: Song URL:", value=f"**[URL]({vc.source.web_url})**", inline=True)
-        embednp.add_field(name=":spy: Uploader:", value=f"**{vc.source.uploader}**", inline=True)
-        embednp.add_field(name=":alarm_clock: Song duration:", value=f"**{datetime.timedelta(seconds=vc.source.duration)}**", inline=True)
+        embednp.add_field(name="Song title:", value=f"```fix\n{vc.source.title}```", inline=False)
+        embednp.add_field(name="Requested by:", value=f"**{vc.source.requester}**", inline=True)
+        embednp.add_field(name="Song URL:", value=f"**[URL]({vc.source.web_url})**", inline=True)
+        embednp.add_field(name="Uploader:", value=f"**{vc.source.uploader}**", inline=True)
+        embednp.add_field(name="Song duration:", value=f"**{datetime.timedelta(seconds=vc.source.duration)}**", inline=True)
         embednp.set_thumbnail(url=f"{vc.source.thumbnail}")
         player.np = await ctx.send(embed=embednp)
         self.music_controller = self.bot.loop.create_task(MusicPlayer(ctx).buttons_controller(ctx.guild, player.np, vc.source, ctx.channel, ctx))
